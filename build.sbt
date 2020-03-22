@@ -21,10 +21,15 @@ resolvers += Resolver.DefaultMavenRepository
 
 val scafi_core  = "it.unibo.apice.scafiteam" %% "scafi-core"  % "0.3.2"
 
+testFrameworks += new TestFramework("utest.runner.Framework")
+
 lazy val myProject = (project in file("."))
   .settings(
     name := "learning-scalajs",
     version := "0.1",
     scalaVersion := "2.12.8",
-    libraryDependencies ++= Seq("org.scala-js" %%% "scalajs-dom" % "1.0.0", scafi_core)
+    libraryDependencies ++= Seq(
+      "org.scala-js" %%% "scalajs-dom" % "1.0.0",
+      "com.lihaoyi" %%% "utest" % "0.7.4" % "test",
+      scafi_core)
   )
